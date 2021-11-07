@@ -17,16 +17,16 @@ class CellOrg:
     def __mul__(self, other):
         return CellOrg(self.cell_num * other.cell_num)
 
-    def __floordiv__(self, other):
+    def __truediv__(self, other):
         return CellOrg(self.cell_num // other.cell_num)
 
     def __str__(self):
         return str(self.cell_num)
 
-    def make_order(self):
+    def make_order(self, count):
         str_order = ''
         for i in range(1, self.cell_num + 1):
-            str_order = str_order + '*' + '\n' if i % 5 == 0 else str_order + '*'
+            str_order = str_order + '*' + '\n' if i % count == 0 else str_order + '*'
         return str_order
 
 
@@ -35,6 +35,6 @@ cell_2 = CellOrg(31)
 print(cell_1 + cell_2)
 print(cell_1 - cell_2)
 print(cell_1 * cell_2)
-print(cell_1 // cell_2)
-print(cell_1.make_order())
-print(cell_2.make_order())
+print(cell_1 / cell_2)
+print(cell_1.make_order(5))
+print(cell_2.make_order(10))
